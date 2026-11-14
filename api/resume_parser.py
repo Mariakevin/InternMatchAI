@@ -379,6 +379,68 @@ def parse_education_details(text: str, edu_section: str) -> list[EducationItem]:
     return items
 
 
+_AMBIGUOUS_RESUME_ALIASES = {
+    "go",
+    "express",
+    "react",
+    "node",
+    "ts",
+    "ml",
+    "py",
+    "js",
+    "r",
+}
+_VERB_FOLLOWERS = {
+    "through",
+    "to",
+    "on",
+    "ahead",
+    "for",
+    "into",
+    "over",
+    "out",
+    "up",
+    "down",
+    "back",
+    "away",
+    "along",
+    "around",
+    "by",
+    "with",
+    "from",
+    "at",
+    "in",
+    "of",
+    "off",
+    "about",
+    "across",
+    "after",
+    "against",
+    "among",
+    "before",
+    "behind",
+    "below",
+    "beneath",
+    "beside",
+    "between",
+    "beyond",
+    "during",
+    "except",
+    "inside",
+    "near",
+    "onto",
+    "outside",
+    "past",
+    "since",
+    "toward",
+    "under",
+    "until",
+    "upon",
+    "within",
+    "without",
+}
+
+
 def extract_skills_with_evidence(
     text: str, sections: dict[str, str]
 ) -> list[SkillProvenance]:
@@ -399,9 +461,21 @@ def extract_skills_with_evidence(
     # Look through vocabulary
     for alias, canonical in SKILL_ALIASES.items():
         # Match word boundary against casefolded text
-        pattern = rf"(?<!\w){re.escape(alias.casefold())}(?!\w)"
+        alias_norm = alias.casefold()
+        pattern = rf"(?<!\w){re.escape(alias_norm)}(?!\w)"
         if not re.search(pattern, normalized_full):
             continue
+
+        # Ambiguous aliases that are also English words are only kept when they
+        # appear in a skill-like context (not as a verb, e.g. "go through").
+        if alias_norm in _AMBIGUOUS_RESUME_ALIASES:
+            occurrences = list(re.finditer(pattern, normalized_full))
+            if not any(
+                (normalized_full[occ.end() :].lstrip()[:12].split() or [""])[0]
+                not in _VERB_FOLLOWERS
+                for occ in occurrences
+            ):
+                continue
 
         if canonical in provenances:
             continue
