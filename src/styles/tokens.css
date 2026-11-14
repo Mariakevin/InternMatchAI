@@ -1,0 +1,93 @@
+:root {
+  /* Surfaces */
+  --paper: #f8f7f3;
+  --surface: #ffffff;
+  --surface-2: #efede6;
+  --surface-3: #e4e1d7;
+
+  /* Ink */
+  --ink: #111315;
+  --ink-2: #3a4048;
+  --ink-3: #5c636e;
+
+  /* Rules */
+  --rule: #d6d3ca;
+  --rule-strong: #111315;
+  --border-control: #8a8f98;
+
+  /* Structural accent */
+  --accent: #1f4fd8;
+  --accent-hover: #1a44bb;
+  --accent-ink: #17356b;
+  --accent-wash: #e9eefc;
+  --on-accent: #ffffff;
+
+  /* Status */
+  --pass-fg: #0b6b3f;
+  --pass-bg: #e7f3ec;
+  --pass-bd: #a9d3bb;
+  --warn-fg: #8a4b00;
+  --warn-bg: #fbf0da;
+  --warn-bd: #e8c88e;
+  --fail-fg: #b42318;
+  --fail-bg: #fde8e6;
+  --fail-bd: #efb4ae;
+  --info-fg: #1a4fa0;
+  --info-bg: #e7effb;
+  --info-bd: #aec4e8;
+  --unknown-fg: #4a5160;
+  --unknown-bg: #ecebe6;
+  --unknown-bd: #c3c2ba;
+  --focus: #1f4fd8;
+
+  /* Type */
+  --font-ui: "IBM Plex Sans", "Public Sans", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-data: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-doc: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  --fs-11: 0.6875rem;
+  --fs-12: 0.75rem;
+  --fs-13: 0.8125rem;
+  --fs-14: 0.875rem;
+  --fs-16: 1rem;
+  --fs-18: 1.125rem;
+  --fs-22: 1.375rem;
+  --fs-28: 1.75rem;
+  --fs-36: 2.25rem;
+  --fs-48: 3rem;
+  --fs-64: 4rem;
+  --lh-tight: 1.15;
+  --lh-snug: 1.3;
+  --lh-body: 1.55;
+  --lh-data: 1.35;
+
+  /* Space */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-7: 32px;
+  --s-8: 40px;
+  --s-9: 48px;
+  --s-10: 64px;
+
+  /* Shape */
+  --r-1: 2px;
+  --r-2: 4px;
+  --r-3: 6px;
+  --bw: 1px;
+  --bw-strong: 2px;
+  --shadow-1: 0 1px 2px rgba(17, 19, 21, 0.06);
+  --shadow-2: 0 12px 32px -8px rgba(17, 19, 21, 0.18), 0 2px 6px rgba(17, 19, 21, 0.06);
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --dur-1: 90ms;
+  --dur-2: 140ms;
+  --dur-3: 200ms;
+
+  /* Layout */
+  --shell: 1180px;
+  --header-h: 64px;
+}
